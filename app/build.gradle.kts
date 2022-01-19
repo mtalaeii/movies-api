@@ -1,7 +1,7 @@
 plugins {
-    id ("com.android.application")
-    id ("kotlin-android")
-    id ("kotlin-kapt")
+    id(BuildPlugin.android_)
+    id(BuildPlugin.android_application)
+    id(BuildPlugin.kapt)
 }
 
 android {
@@ -9,16 +9,16 @@ android {
 
     defaultConfig {
         applicationId = "com.mtalaeii.moviesapp"
-        minSdk = 21
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.androidTestInstrumentation
     }
 
     buildTypes {
-        getByName("release") {
+        getByName(AppConfig.BuildTypes.release) {
             isMinifyEnabled = false
             proguardFiles (
                     getDefaultProguardFile("proguard-android-optimize.txt"),
