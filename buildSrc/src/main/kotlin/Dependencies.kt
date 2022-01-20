@@ -17,6 +17,7 @@ object Versions{
     const val app_compat_version = "1.4.1"
     const val material_version = "1.5.0"
     const val constraint_layout_version = "2.1.3"
+    const val hilt_version = "1.0.0"
 }
 object Dependencies{
     private const val  navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
@@ -26,6 +27,9 @@ object Dependencies{
     private const val app_compat = "androidx.appcompat:appcompat:${Versions.app_compat_version}"
     private const val material = "com.google.android.material:material:${Versions.material_version}"
     private const val constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout_version}"
+    private const val hilt = "androidx.hilt:hilt-work:${Versions.hilt_version}"
+    private const val hilt_compiler = "androidx.hilt:hilt-compiler:${Versions.hilt_version}"
+    private const val hilt_navigation_fragment = "androidx.hilt:hilt-navigation-fragment:${Versions.hilt_version}"
     val appLibraries = arrayListOf<String>().apply {
         add(navigation_ui)
         add(app_metrica)
@@ -34,13 +38,14 @@ object Dependencies{
         add(app_compat)
         add(material)
         add(constraint_layout)
+        add(hilt)
+        add(hilt_navigation_fragment)
     }
 
-//    val kapt = arrayListOf<String>().apply {
-//        add(hiltAndroidCompiler)
-//        add(hiltAndroidKaptCompiler)
-//        add(hiltCompiler)
-//    }
+
+    val kapt = arrayListOf<String>().apply {
+        add(hilt_compiler)
+    }
 //
 //    val mainModuleKapt = arrayListOf<String>().apply {
 //        add(navigationFragment)
@@ -96,6 +101,12 @@ object GradleDependencies{
     const val  build_tools = "com.android.tools.build:gradle:${Versions.build_tools_version}"
     const val app_metrica = "com.yandex.android:appmetrica-build-plugin:${Versions.app_metrica_plugin_version}"
     const val  navigation_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
+//    val gradleDep = arrayListOf<String>().apply {
+//        add(kotlin_gradle_plugin)
+//        add(app_metrica)
+//        add(build_tools)
+//        add(navigation_safe_args)
+//    }
 
 }
 
@@ -153,3 +164,8 @@ fun DependencyHandler.testImplementation(list: List<String>) {
         add("testImplementation", dependency)
     }
 }
+//fun DependencyHandler.classpath(list: List<String>){
+//    list.forEach { dependency ->
+//        add("classpath", dependency)
+//    }
+//}
