@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mtalaeii.moviesapp.view.SplashFragment"
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/action_splashFragment_to_login_nav"
+            app:destination="@id/login_nav" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="to://login" />
+    </fragment>
+    <include app:graph="@navigation/login_nav" />
+</navigation>
