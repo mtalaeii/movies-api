@@ -1,5 +1,6 @@
 package com.mtalaeii.moviesapp
 
+import com.mtalaeii.core.BaseActivity
 import com.mtalaeii.moviesapp.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {

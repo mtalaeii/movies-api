@@ -3,7 +3,9 @@ package com.mtalaeii.moviesapp
 import android.app.Application
 import com.yandex.metrica.YandexMetrica
 import com.yandex.metrica.YandexMetricaConfig
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class App:Application(){
     override fun onCreate() {
         super.onCreate()

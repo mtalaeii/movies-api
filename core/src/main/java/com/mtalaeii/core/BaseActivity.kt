@@ -1,4 +1,4 @@
-package com.mtalaeii.moviesapp
+package com.mtalaeii.core
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
