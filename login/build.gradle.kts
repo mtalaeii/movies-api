@@ -2,6 +2,7 @@ plugins {
     id(BuildPlugin.android_library)
     id(BuildPlugin.android_)
     id(BuildPlugin.kapt)
+    id(BuildPlugin.androidx_navigation)
 }
 
 android {

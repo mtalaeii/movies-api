@@ -14,8 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
-    val viewModel: ViewModel by viewModels()
+abstract class BaseFragment<DB : ViewDataBinding>() : Fragment() {
     open lateinit var mBinding: DB
     private fun init(inflater: LayoutInflater, container: ViewGroup) {
         mBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
@@ -24,13 +23,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     open fun init() {}
     @LayoutRes
     abstract fun getLayoutRes(): Int
-
-    private fun getViewM() = viewModel
     open fun onInject() {}
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         init(inflater, container!!)

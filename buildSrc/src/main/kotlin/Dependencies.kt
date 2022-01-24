@@ -18,6 +18,11 @@ object Versions{
     const val material_version = "1.5.0"
     const val constraint_layout_version = "2.1.3"
     const val hilt_version = "1.0.0"
+    const val retrofit_version = "2.9.0"
+    const val gson_converter_version = "2.9.0"
+    const val okhttp_version = "3.12.0"
+    const val gson_version = "2.8.6"
+
 }
 object Dependencies{
     private const val  navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
@@ -30,6 +35,10 @@ object Dependencies{
     private const val hilt = "androidx.hilt:hilt-work:${Versions.hilt_version}"
     private const val hilt_compiler = "androidx.hilt:hilt-compiler:${Versions.hilt_version}"
     private const val hilt_navigation_fragment = "androidx.hilt:hilt-navigation-fragment:${Versions.hilt_version}"
+    private const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}:"
+    private const val gson_converter = "com.squareup.retrofit2:converter-gson:${Versions.gson_converter_version}:"
+    private const val okhttp = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_version}:"
+    private const val gson = "com.google.code.gson:gson:${Versions.gson_version}:"
     val appLibraries = arrayListOf<String>().apply {
         add(navigation_ui)
         add(app_metrica)
@@ -40,6 +49,10 @@ object Dependencies{
         add(constraint_layout)
         add(hilt)
         add(hilt_navigation_fragment)
+        add(retrofit)
+        add(gson)
+        add(gson_converter)
+        add(okhttp)
     }
 
 

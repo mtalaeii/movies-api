@@ -13,8 +13,15 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import android.os.Looper
+import android.widget.Toast
 import androidx.core.net.toUri
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.mtalaeii.moviesapp.viewmodel.SplashViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.runBlocking
 import kotlin.concurrent.thread
 
 
@@ -25,17 +32,16 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val thread = Thread(Runnable {
-            kotlin.run {
-                Thread.sleep(3000)
-                findNavController().navigate(Uri.parse("to//login"))
-            }
 
-        })
-        thread.start()
+        val viewModel : SplashViewModel by viewModels()
+        lifecycleScope.launchWhenCreated {
+            delay(3000)
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginNav())
+        }
         return super.onCreateView(inflater, container, savedInstanceState)
     }
     override fun getLayoutRes(): Int {
         return R.layout.fragment_splash
     }
+
 }
