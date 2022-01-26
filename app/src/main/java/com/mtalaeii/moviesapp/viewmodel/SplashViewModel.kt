@@ -7,6 +7,5 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.runBlocking
-@HiltViewModel
 open class SplashViewModel:BaseViewModel() {
 }

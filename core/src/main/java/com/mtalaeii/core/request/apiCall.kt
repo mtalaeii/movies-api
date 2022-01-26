@@ -1,4 +1,4 @@
-package com.mtalaeii.core
+package com.mtalaeii.core.request
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -36,7 +36,7 @@ suspend fun <T> privateApiCall(emitter: RemoteErrorEmitter?, responseFunction: s
                 }
                 is IOException -> {
                     val body = e.message
-                    emitter?.onError("Please check your connection!")
+                    emitter?.onError("Please check your connection! $body")
                     emitter?.onError(ErrorType.NETWORK)
                 }
                 else -> {

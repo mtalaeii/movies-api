@@ -6,6 +6,9 @@ object BuildPlugin{
     const val android_application = "com.android.application"
     const val android_ = "kotlin-android"
     const val kapt = "kotlin-kapt"
+    const val hilt = "dagger.hilt.android.plugin"
+    const val parcelize = "kotlin-parcelize"
+
 }
 object Versions{
     const val nav_version = "2.3.5"
@@ -17,7 +20,10 @@ object Versions{
     const val app_compat_version = "1.4.1"
     const val material_version = "1.5.0"
     const val constraint_layout_version = "2.1.3"
-    const val hilt_version = "1.0.0"
+    const val hilt_android_version = "2.38.1"
+    const val hilt_compiler_version = "2.38.1"
+    const val hilt_compiler_androidx_version = "1.0.0"
+    const val hilt_viewModel_version = "1.0.0-alpha03"
     const val retrofit_version = "2.9.0"
     const val gson_converter_version = "2.9.0"
     const val okhttp_version = "3.12.0"
@@ -32,13 +38,16 @@ object Dependencies{
     private const val app_compat = "androidx.appcompat:appcompat:${Versions.app_compat_version}"
     private const val material = "com.google.android.material:material:${Versions.material_version}"
     private const val constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout_version}"
-    private const val hilt = "androidx.hilt:hilt-work:${Versions.hilt_version}"
-    private const val hilt_compiler = "androidx.hilt:hilt-compiler:${Versions.hilt_version}"
-    private const val hilt_navigation_fragment = "androidx.hilt:hilt-navigation-fragment:${Versions.hilt_version}"
-    private const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}:"
-    private const val gson_converter = "com.squareup.retrofit2:converter-gson:${Versions.gson_converter_version}:"
-    private const val okhttp = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_version}:"
-    private const val gson = "com.google.code.gson:gson:${Versions.gson_version}:"
+    //Hilt
+    private const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt_android_version}"
+    private const val hilt_compiler = "com.google.dagger:hilt-compiler:${Versions.hilt_compiler_version}"
+    private const val hilt_compiler_androidx = "androidx.hilt:hilt-compiler:${Versions.hilt_compiler_androidx_version}"
+    private const val hilt_viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hilt_viewModel_version}"
+    //Retrofit
+    private const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
+    private const val gson_converter = "com.squareup.retrofit2:converter-gson:${Versions.gson_converter_version}"
+    private const val okhttp = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_version}"
+    private const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
     val appLibraries = arrayListOf<String>().apply {
         add(navigation_ui)
         add(app_metrica)
@@ -47,8 +56,8 @@ object Dependencies{
         add(app_compat)
         add(material)
         add(constraint_layout)
-        add(hilt)
-        add(hilt_navigation_fragment)
+        add(hilt_android)
+        add(hilt_viewModel)
         add(retrofit)
         add(gson)
         add(gson_converter)
@@ -58,6 +67,7 @@ object Dependencies{
 
     val kapt = arrayListOf<String>().apply {
         add(hilt_compiler)
+        add(hilt_compiler_androidx)
     }
 //
 //    val mainModuleKapt = arrayListOf<String>().apply {
@@ -114,6 +124,7 @@ object GradleDependencies{
     const val  build_tools = "com.android.tools.build:gradle:${Versions.build_tools_version}"
     const val app_metrica = "com.yandex.android:appmetrica-build-plugin:${Versions.app_metrica_plugin_version}"
     const val  navigation_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
+    const val hilt_plugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt_android_version}"
 //    val gradleDep = arrayListOf<String>().apply {
 //        add(kotlin_gradle_plugin)
 //        add(app_metrica)

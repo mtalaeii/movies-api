@@ -9,8 +9,8 @@ buildscript {
         classpath (GradleDependencies.kotlin_gradle_plugin)
         classpath(GradleDependencies.app_metrica)
         classpath(GradleDependencies.navigation_safe_args)
-//        classpath(GradleDependencies.hilt_navigation_fragment)
-//        classpath(GradleDependencies.gradleDep)
+        classpath(GradleDependencies.hilt_plugin)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

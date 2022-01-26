@@ -1,4 +1,4 @@
-package com.mtalaeii.core
+package com.mtalaeii.core.request
 
 interface RemoteErrorEmitter {
     fun onError(msg:String)

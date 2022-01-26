@@ -8,7 +8,9 @@ import androidx.navigation.fragment.findNavController
 import com.mtalaeii.core.BaseFragment
 import com.mtalaeii.login.R
 import com.mtalaeii.login.databinding.LoginFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<LoginFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val name:EditText = mBinding.nameEdt

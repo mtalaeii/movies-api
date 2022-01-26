@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav"
     app:startDestination="@id/loginFragment">
 
@@ -11,6 +12,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_informationFragment"
+            app:destination="@id/informationFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -19,6 +23,17 @@
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_informationFragment"
+            app:destination="@id/informationFragment">
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.mtalaeii.login.view.InformationFragment"
+        android:label="InformationFragment">
+        <argument android:name="data" app:argType="com.mtalaeii.core.model.SignUpResponse"/>
     </fragment>
 
 </navigation>

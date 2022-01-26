@@ -1,24 +1,23 @@
-package com.mtalaeii.login.request
-
-import com.mtalaeii.login.model.Auth
+package com.mtalaeii.core.request
+import com.mtalaeii.core.model.Auth
+import com.mtalaeii.core.model.SignUpResponse
 import retrofit2.Response
 import retrofit2.http.*
 
 
 interface Api {
     @FormUrlEncoded
-    @POST
+    @POST("/oauth/token")
     suspend fun userLogin(
-        @Url url:String,
         @Field("grant_type") grant_type:String = "password",
         @Field("username") username:String,
         @Field("password") password:String
     )
-    @POST
+    @Headers("Content-Type: application/json; charset=utf-8", "Accept:application/json")
+    @POST("/api/v1/register")
     suspend fun userSignUp(
-        @Url url:String,
         @Body field:Auth
-    ):Response<String>
+    ):Response<SignUpResponse>
 
 
 }

@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-abstract class BaseFragment<DB : ViewDataBinding>() : Fragment() {
+
+abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     open lateinit var mBinding: DB
     private fun init(inflater: LayoutInflater, container: ViewGroup) {
         mBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)

@@ -1,6 +1,6 @@
-package com.mtalaeii.login.di
+package com.mtalaeii.core.di
 
-import com.mtalaeii.login.request.Api
+import com.mtalaeii.core.request.Api
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 open class ApiModule {
     @Provides
     fun provideBaseUrl():String{
-        return "https://google.com/"
+        return "https://moviesapi.ir/"
     }
     @Provides
     @Singleton

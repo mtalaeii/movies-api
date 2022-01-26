@@ -1,12 +1,13 @@
-package com.mtalaeii.login.di
+package com.mtalaeii.core.di
 
-import com.mtalaeii.login.request.Api
-import com.mtalaeii.login.request.Repository
+import com.mtalaeii.core.request.Api
+import com.mtalaeii.core.request.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
