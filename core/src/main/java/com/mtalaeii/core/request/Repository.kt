@@ -12,8 +12,11 @@ class Repository(var api: Api){
     fun signUpNewUser(field: Auth) = apiCall(emitter){
         api.userSignUp(field)
     }
-    fun signInUser(username:String,password:String) = apiCall(emitter){
-        api.userLogin("password", username, password)
+    fun signInUser(map:HashMap<String,String>) = apiCall(emitter){
+        api.userLogin(map)
+    }
+    fun getInfo(auth:String) = apiCall(emitter){
+        api.getUserInfo(auth)
     }
     fun addEmitter(emitter: RemoteErrorEmitter){
         this.emitter = emitter

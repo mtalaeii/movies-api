@@ -8,12 +8,13 @@
         android:id="@+id/splashFragment"
         android:name="com.mtalaeii.moviesapp.view.SplashFragment"
         android:label="SplashFragment">
-
         <action
-            android:id="@+id/action_splashFragment_to_login_nav"
-            app:destination="@id/login_nav"
+            android:id="@+id/action_splashFragment_to_main_page_nav"
+            app:destination="@id/main_page_nav"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <include app:graph="@navigation/login_nav" />
+    <include app:graph="@navigation/main_page_nav" />
+    <include app:graph="@navigation/search_nav" />
 </navigation>

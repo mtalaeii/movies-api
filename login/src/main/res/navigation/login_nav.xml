@@ -8,13 +8,16 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.mtalaeii.login.view.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_loginFragment_to_informationFragment"
             app:destination="@id/informationFragment" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="to://login" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"

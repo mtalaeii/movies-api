@@ -22,7 +22,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     ): View {
         lifecycleScope.launchWhenCreated {
             delay(3000)
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginNav())
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMainPageNav())
         }
         return super.onCreateView(inflater, container, savedInstanceState)
     }
