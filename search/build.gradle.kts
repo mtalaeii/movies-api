@@ -2,7 +2,7 @@ plugins {
     id(BuildPlugin.android_library)
     id(BuildPlugin.android_)
     id(BuildPlugin.kapt)
-//    id(BuildPlugin.hilt)
+    id(BuildPlugin.hilt)
     id(BuildPlugin.parcelize)
 }
 
@@ -41,6 +41,7 @@ android {
 dependencies {
 
     implementation(Dependencies.appLibraries)
+    kapt(Dependencies.kapt)
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")

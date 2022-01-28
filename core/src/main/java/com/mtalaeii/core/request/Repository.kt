@@ -18,6 +18,9 @@ class Repository(var api: Api){
     fun getInfo(auth:String) = apiCall(emitter){
         api.getUserInfo(auth)
     }
+    fun getByPage(page:Int) = apiCall(emitter){
+        api.getByPage(page)
+    }
     fun addEmitter(emitter: RemoteErrorEmitter){
         this.emitter = emitter
     }

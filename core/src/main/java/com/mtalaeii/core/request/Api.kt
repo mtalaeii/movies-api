@@ -3,6 +3,7 @@ package com.mtalaeii.core.request
 import com.mtalaeii.core.model.Auth
 import com.mtalaeii.core.model.GetTokenResponse
 import com.mtalaeii.core.model.SignUpResponse
+import com.mtalaeii.core.model.search.SearchResponse
 import retrofit2.Response
 import retrofit2.http.*
 interface Api {
@@ -22,9 +23,9 @@ interface Api {
         @Header("Authorization") auth:String,
         @Header("Accept") accept:String = "application/json"
     ):Response<SignUpResponse>
-//    @GET("/api/v1/movies")
-//    suspend fun getByPage(
-//        @Query("page") page: Int
-//    ):Response<SearchResponse>
+    @GET("/api/v1/movies")
+    suspend fun getByPage(
+        @Query("page") page: Int
+    ):Response<SearchResponse>
 
 }

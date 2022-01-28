@@ -9,6 +9,8 @@
         <entry key="login/src/main/res/layout/information_fragment.xml" value="0.35104166666666664" />
         <entry key="login/src/main/res/layout/login_fragment.xml" value="0.35104166666666664" />
         <entry key="login/src/main/res/layout/sign_up_fragment.xml" value="0.35104166666666664" />
+        <entry key="search/src/main/res/layout/search_fragment.xml" value="0.35104166666666664" />
+        <entry key="search/src/main/res/layout/search_item.xml" value="0.35104166666666664" />
       </map>
     </option>
   </component>

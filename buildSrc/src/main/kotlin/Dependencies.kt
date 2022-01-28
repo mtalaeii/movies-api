@@ -28,6 +28,8 @@ object Versions{
     const val gson_converter_version = "2.9.0"
     const val okhttp_version = "3.12.0"
     const val gson_version = "2.8.6"
+    const val paging_version = "3.0.0-alpha06"
+    const val glide_version = "4.11.0"
 
 }
 object Dependencies{
@@ -48,6 +50,10 @@ object Dependencies{
     private const val gson_converter = "com.squareup.retrofit2:converter-gson:${Versions.gson_converter_version}"
     private const val okhttp = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_version}"
     private const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
+    //Paging
+    private const val paging =  "androidx.paging:paging-runtime:${Versions.paging_version}"
+    //Glide
+    private const val glide =  "com.github.bumptech.glide:glide:${Versions.glide_version}"
     val appLibraries = arrayListOf<String>().apply {
         add(navigation_ui)
         add(app_metrica)
@@ -62,6 +68,8 @@ object Dependencies{
         add(gson)
         add(gson_converter)
         add(okhttp)
+        add(paging)
+        add(glide)
     }
 
 
