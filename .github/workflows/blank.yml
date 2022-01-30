@@ -82,13 +82,13 @@ jobs:
       - name: Run unit tests
         run: ./gradlew test --stacktrace
 
-      - name: Instrumentation Tests
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: Instrumentation Test
+        uses: ReactiveCircus/android-emulator-runner@v2.22.0
         with:
           api-level: ${{ matrix.api-level }}
           target: ${{ matrix.target }}
           arch: x86
-          profile: Nexus 6
+          profile: Nexus_6_API_30(AVD)
           script: ./gradlew connectedCheck --stacktrace
 
       - name: Upload Reports
