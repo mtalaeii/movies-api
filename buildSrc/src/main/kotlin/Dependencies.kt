@@ -30,9 +30,18 @@ object Versions{
     const val gson_version = "2.8.6"
     const val paging_version = "3.0.0-alpha06"
     const val glide_version = "4.11.0"
+    const val support_version = "1.0.0"
+    const val lifecycle_version = "2.4.0"
+    const val test_ext_version = "1.1.3"
+    const val test_espresso_version = "3.4.0"
 
 }
 object Dependencies{
+    //Default dependencies
+    private const val support = "androidx.legacy:legacy-support-v4:${Versions.support_version}"
+    private const val lifecycle_liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
+    private const val lifecycle_viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+
     private const val  navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
     private const val  navigation_ui = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
     private const val app_metrica = "com.yandex.android:mobmetricalib:${Versions.app_metrica_version}"
@@ -54,6 +63,11 @@ object Dependencies{
     private const val paging =  "androidx.paging:paging-runtime:${Versions.paging_version}"
     //Glide
     private const val glide =  "com.github.bumptech.glide:glide:${Versions.glide_version}"
+
+    //androidTestLibraries
+    private const val test_ext = "androidx.test.ext:junit:${Versions.test_ext_version}"
+    private const val test_espresso = "androidx.test.espresso:espresso-core:${Versions.test_espresso_version}"
+
     val appLibraries = arrayListOf<String>().apply {
         add(navigation_ui)
         add(app_metrica)
@@ -70,6 +84,9 @@ object Dependencies{
         add(okhttp)
         add(paging)
         add(glide)
+        add(support)
+        add(lifecycle_viewModel)
+        add(lifecycle_liveData)
     }
 
 
@@ -77,55 +94,12 @@ object Dependencies{
         add(hilt_compiler)
         add(hilt_compiler_androidx)
     }
-//
-//    val mainModuleKapt = arrayListOf<String>().apply {
-//        add(navigationFragment)
-//        add(hiltAndroidCompiler)
-//    }
-//
-//    val mainLibraries = arrayListOf<String>().apply {
-//        add(kotlinStdLib)
-//        add(coreKtx)
-//        add(appcompat)
-//        add(constraintLayout)
-//        add(material)
-//        add(navigationFragment)
-//        add(navigationUi)
-//        add(junit)
-//        add(extJUnit)
-//        add(espressoCore)
-//        add(hiltAndroid)
-//        add(loggingInterceptor)
-//        add(retrofit)
-//        add(retrofitGson)
-//        add(glide)
-//        add(coroutinesCore)
-//        add(lifecycleArch)
-//    }
-//    val dataLibraries = arrayListOf<String>().apply {
-//        add(kotlinStdLib)
-//        add(coreKtx)
-//        add(appcompat)
-//        add(junit)
-//        add(extJUnit)
-//        add(espressoCore)
-//        add(retrofit)
-//        add(hiltAndroid)
-//        add(retrofitGson)
-//        add(loggingInterceptor)
-//    }
-//
-//    val domainLibraries = arrayListOf<String>().apply {
-//        add(kotlinStdLib)
-//        add(coreKtx)
-//        add(appcompat)
-//        add(junit)
-//        add(extJUnit)
-//        add(espressoCore)
-//        add(retrofit)
-//        add(hiltAndroid)
-//        add(retrofit)
-//    }
+
+    val androidTestImplements = arrayListOf<String>().apply {
+        add(test_ext)
+        add(test_espresso)
+    }
+
 }
 object GradleDependencies{
     const val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_gradle_plugin_version}"
@@ -133,12 +107,6 @@ object GradleDependencies{
     const val app_metrica = "com.yandex.android:appmetrica-build-plugin:${Versions.app_metrica_plugin_version}"
     const val  navigation_safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
     const val hilt_plugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt_android_version}"
-//    val gradleDep = arrayListOf<String>().apply {
-//        add(kotlin_gradle_plugin)
-//        add(app_metrica)
-//        add(build_tools)
-//        add(navigation_safe_args)
-//    }
 
 }
 

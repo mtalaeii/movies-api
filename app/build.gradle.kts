@@ -50,12 +50,8 @@ android {
 
 dependencies {
     implementation(Dependencies.appLibraries)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     testImplementation ("junit:junit:4.+")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation (Dependencies.androidTestImplements)
     kapt(Dependencies.kapt)
     implementation(project(":login"))
     implementation(project(":core"))
