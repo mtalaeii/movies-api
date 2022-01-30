@@ -29,14 +29,14 @@
         <action
             android:id="@+id/action_signUpFragment_to_informationFragment"
             app:destination="@id/informationFragment">
-        </action>
 
+        </action>
     </fragment>
     <fragment
         android:id="@+id/informationFragment"
         android:name="com.mtalaeii.login.view.InformationFragment"
         android:label="InformationFragment">
-        <argument android:name="data" app:argType="com.mtalaeii.core.model.SignUpResponse"/>
+        <argument android:name="data" app:argType="com.mtalaeii.core.model.login.SignUpResponse"/>
     </fragment>
 
 </navigation>

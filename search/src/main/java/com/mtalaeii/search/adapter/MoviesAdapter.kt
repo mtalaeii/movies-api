@@ -1,6 +1,5 @@
 package com.mtalaeii.search.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -8,11 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mtalaeii.core.model.search.Data
-import com.mtalaeii.core.model.search.SearchResponse
 import com.mtalaeii.search.databinding.SearchItemBinding
+import javax.inject.Inject
 
-class MoviesAdapter: PagingDataAdapter<Data, MoviesAdapter.PassengersViewHolder>(PassengersComparator) {
-
+class MoviesAdapter @Inject constructor(): PagingDataAdapter<Data, MoviesAdapter.PassengersViewHolder>(PassengersComparator) {
+    lateinit var onItemClick: OnItemClick
     inner class PassengersViewHolder(private val binding: SearchItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -29,6 +28,9 @@ class MoviesAdapter: PagingDataAdapter<Data, MoviesAdapter.PassengersViewHolder>
             if (it != null) {
                 holder.bindMovies(it)
             }
+        }
+        holder.itemView.setOnClickListener {
+            onItemClick.onClick(item!!)
         }
     }
 
@@ -47,5 +49,8 @@ class MoviesAdapter: PagingDataAdapter<Data, MoviesAdapter.PassengersViewHolder>
         override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean {
             return oldItem == newItem
         }
+    }
+    fun setUpListener(onItemClick: OnItemClick){
+        this.onItemClick = onItemClick
     }
 }

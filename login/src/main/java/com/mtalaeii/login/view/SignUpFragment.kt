@@ -7,17 +7,14 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.mtalaeii.core.BaseFragment
 import com.mtalaeii.login.R
 import com.mtalaeii.login.databinding.SignUpFragmentBinding
-import com.mtalaeii.core.model.Auth
+import com.mtalaeii.core.model.login.Auth
 import com.mtalaeii.login.viewModel.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
 

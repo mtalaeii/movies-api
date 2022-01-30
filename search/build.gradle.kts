@@ -1,9 +1,11 @@
+
 plugins {
     id(BuildPlugin.android_library)
     id(BuildPlugin.android_)
     id(BuildPlugin.kapt)
     id(BuildPlugin.hilt)
     id(BuildPlugin.parcelize)
+    id(BuildPlugin.androidx_navigation)
 }
 
 android {

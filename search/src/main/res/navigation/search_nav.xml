@@ -11,5 +11,16 @@
         <deepLink
             android:id="@+id/deepLink"
             app:uri="to://search" />
+        <action
+            android:id="@+id/action_searchFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.mtalaeii.search.view.InfoFragment"
+        android:label="InfoFragment" >
+        <argument
+            android:name="data"
+            app:argType="com.mtalaeii.core.model.search.Data" />
     </fragment>
 </navigation>

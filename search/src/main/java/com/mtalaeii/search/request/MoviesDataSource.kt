@@ -2,8 +2,6 @@ package com.mtalaeii.search.request
 
 import androidx.paging.PagingSource
 import com.mtalaeii.core.model.search.Data
-import com.mtalaeii.core.model.search.SearchResponse
-import com.mtalaeii.core.request.Api
 import com.mtalaeii.core.request.Repository
 
 class MoviesDataSource constructor(var repo: Repository): PagingSource<Int, Data>() {

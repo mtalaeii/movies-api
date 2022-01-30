@@ -1,4 +1,4 @@
-package com.mtalaeii.core.model
+package com.mtalaeii.core.model.login
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
