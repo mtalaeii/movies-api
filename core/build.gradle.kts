@@ -1,27 +1,29 @@
 plugins {
-    id ("com.android.library")
-    id ("kotlin-android")
-    id ("kotlin-kapt")
-
+    id(BuildPlugin.android_library)
+    id(BuildPlugin.android_)
+    id(BuildPlugin.kapt)
+    id(BuildPlugin.androidx_navigation)
+    id(BuildPlugin.hilt)
+    id(BuildPlugin.parcelize)
 }
 
 android {
     compileSdk = 32
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-//        consumerProguardFiles = "consumer-rules.pro"
+        testInstrumentationRunner = AppConfig.androidTestInstrumentation
+//        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
-        getByName("release") {
+        getByName(AppConfig.BuildTypes.release) {
             isMinifyEnabled = false
             proguardFiles (
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -39,10 +41,12 @@ android {
 
 dependencies {
 
-    implementation ("androidx.core:core-ktx:1.7.0")
-    implementation ("androidx.appcompat:appcompat:1.4.1")
-    implementation ("com.google.android.material:material:1.5.0")
-    testImplementation ("junit:junit:4.+")
+    implementation(Dependencies.appLibraries)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    kapt(Dependencies.kapt)
+    testImplementation ("junit:junit:4.+" )
     androidTestImplementation ("androidx.test.ext:junit:1.1.3")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
 }
