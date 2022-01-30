@@ -1,4 +1,5 @@
 name: Check PR
+-openjdk11
 
 on:
   # Triggers the workflow on every pull request to master branch
