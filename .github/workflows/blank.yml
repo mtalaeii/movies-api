@@ -39,8 +39,13 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       
+      
+      - name: quality_assurance
+        run: ./gradlew lint
+        
       - name: Build the app
         run: ./gradlew assembleDebug
+
 
       - name: Upload apk
         uses: actions/upload-artifact@v2
