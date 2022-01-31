@@ -45,7 +45,10 @@ jobs:
         run: ./gradlew lint
         
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: bash ./gradlew :app:assembleDebug
+        
+      - name: Ls
+        run: ls ${{ github.workspace }}/app
       
       - name: Upload APK
         uses: actions/upload-artifact@v2
@@ -58,10 +61,10 @@ jobs:
         with:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
-          message: |
-          caption: Build Successfully finished!!
-          document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk`
-
+          message: Upload Apk to telegram not just aircraft
+          document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
+            
+         
 
   test:
     runs-on: macos-latest
