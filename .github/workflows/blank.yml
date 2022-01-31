@@ -46,13 +46,14 @@ jobs:
         
       - name: Build the app
         run: ./gradlew assembleDebug
+          -Pandroid.debug.obsoleteApi=true
 
 
       - name: Upload apk
         uses: actions/upload-artifact@v2.3.1
         with:
           name: debug apk
-          path: path/to/app/src
+          path: app/src
           
 #       - name: Upload To Telegram
 #         uses: wei/curl@v1
