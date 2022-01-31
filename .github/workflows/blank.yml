@@ -44,21 +44,33 @@ jobs:
       - name: quality_assurance
         run: ./gradlew lint
         
-      - name: Build the app
-        run: ./gradlew assembleDebug
-          -Pandroid.debug.obsoleteApi=true
+#       - name: Build the app
+#         run: ./gradlew assembleDebug
+#           -Pandroid.debug.obsoleteApi=true
 
 
-      - name: Upload apk
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          name: debug apk
-          path: app/src
-          
-#       - name: Upload To Telegram
-#         uses: wei/curl@v1
+#       - name: Upload apk
+#         uses: actions/upload-artifact@v2.3.1
 #         with:
-#             args: -F document=\"app/src/app-debug.apk\" -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendDocument\?chat_id\=${{secrets.CHAT_ID}}
+#           name: debug apk
+#           path: app/src
+      - name: Build Debug APK
+        run: bash ./gradlew :app:assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with: 
+          name: App
+          path: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: send custom message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.BOT_TOKEN }}
+          message: |
+          Below is the apk for commit: ${{ github.event.head_commit.message }}
+          document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk`
 
 
   test:
