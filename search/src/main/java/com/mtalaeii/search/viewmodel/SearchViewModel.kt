@@ -6,14 +6,14 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.mtalaeii.core.BaseViewModel
-import com.mtalaeii.core.model.search.Data
+import com.mtalaeii.search.model.Data
 import com.mtalaeii.core.request.ErrorType
 import com.mtalaeii.core.request.RemoteErrorEmitter
-import com.mtalaeii.core.model.search.InsertResponse
-import com.mtalaeii.core.request.Repository
+import com.mtalaeii.search.model.InsertResponse
 import com.mtalaeii.search.adapter.MoviesAdapter
 import com.mtalaeii.search.adapter.OnItemClick
 import com.mtalaeii.search.request.MoviesDataSource
+import com.mtalaeii.search.request.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchViewModel @Inject constructor(var repo: Repository,var adapter: MoviesAdapter): BaseViewModel(),
+class SearchViewModel @Inject constructor(var repo: Repository, var adapter: MoviesAdapter): BaseViewModel(),
     RemoteErrorEmitter,OnItemClick {
     var errorTypeCh = Channel<String>()
     var errorMsg = Channel<String>()

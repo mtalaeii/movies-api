@@ -5,7 +5,7 @@
     <data>
         <variable
             name="data"
-            type="com.mtalaeii.core.model.login.SignUpResponse" />
+            type="com.mtalaeii.login.model.SignUpResponse" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

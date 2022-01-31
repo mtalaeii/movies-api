@@ -1,14 +1,14 @@
 package com.mtalaeii.search.request
 
 import androidx.paging.PagingSource
-import com.mtalaeii.core.model.search.Data
-import com.mtalaeii.core.request.Repository
+import com.mtalaeii.search.model.Data
+import javax.inject.Inject
 
-class MoviesDataSource constructor(var repo: Repository): PagingSource<Int, Data>() {
+class MoviesDataSource @Inject constructor(var repo: Repository): PagingSource<Int, Data>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Data> {
         try {
             val currentLoadingPageKey = params.key ?: 1
-            val response = repo.api.getByPage(currentLoadingPageKey)
+            val response = repo.searchApi.getByPage(currentLoadingPageKey)
             val responseData = mutableListOf<Data>()
             val data = response.body()?.data ?: emptyList()
             responseData.addAll(data)

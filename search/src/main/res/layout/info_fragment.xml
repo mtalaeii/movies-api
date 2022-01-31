@@ -5,7 +5,7 @@
     <data>
         <variable
             name="data"
-            type="com.mtalaeii.core.model.search.InfoResponse" />
+            type="com.mtalaeii.search.model.InfoResponse" />
         <variable
             name="viewModel"
             type="com.mtalaeii.search.viewmodel.InfoViewModel" />
