@@ -45,7 +45,11 @@ jobs:
         run: ./gradlew lint
         
       - name: Build Debug APK
-        run: ./gradlew assembleDebug 
+        run: ./gradlew build
+        
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
+         
         
       - name: Upload APK
         uses: actions/upload-artifact@v2
