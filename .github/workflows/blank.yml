@@ -54,12 +54,9 @@ jobs:
           name: debug apk
           path: app/src/app-debug.apk
       - name: Upload To Telegram
-        env:
-          BOT_TOKEN : ${{ secrets.API_OTKEN }}
-          CHAT_ID : ${{ secrets.CHAT_ID }}
         uses: wei/curl@v1
         with:
-            args: curl -X POST -F document="app/src/app-debug.apk" https://api.telegram.org/bot${BOT_TOKEN}/sendDocument?chat_id=${CHAT_ID}
+            args: curl -X POST -F document="app/src/app-debug.apk" https://api.telegram.org/bot${{ secrets.BOT_TOKEN }}/sendDocument?chat_id=${{ secrets.CHAT_ID }}
 
 
   test:
