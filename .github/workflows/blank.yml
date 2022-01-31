@@ -52,6 +52,7 @@ jobs:
         with:
           build-root-directory: app/build
           arguments: assembleDebug 
+          gradle-version: 7.0.2
         
       - name: Upload APK
         uses: actions/upload-artifact@v2
