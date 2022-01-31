@@ -109,5 +109,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Test-Reports
-          path: app/build/reports
+          path: app/build/reports/report.txt
         if: always()
