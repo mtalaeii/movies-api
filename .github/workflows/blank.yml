@@ -56,7 +56,7 @@ jobs:
       - name: Upload To Telegram
         uses: wei/curl@v1
         with:
-            args: -X POST -F document=\"app/src/app-debug.apk\" https://api.telegram.org/bot$\{\{secrets.BOT_TOKEN\}\}/sendDocument\?chat_id\=$\{\{secrets.CHAT_ID\}\}
+            args: -F document=\"app/src/app-debug.apk\" -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendDocument\?chat_id\=${{secrets.CHAT_ID}}
 
 
   test:
