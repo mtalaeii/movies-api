@@ -44,15 +44,8 @@ jobs:
       - name: quality_assurance
         run: ./gradlew lint
         
-#       - name: Build Debug APK
-#         run: bash ./gradlew :app:assembleDebug 
-
-      - name: Gradle Build Action
-        uses: gradle/gradle-build-action@v2.1.2
-        with:
-          build-root-directory: app/build
-          arguments: assembleDebug 
-          gradle-version: 7.0.2
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug 
         
       - name: Upload APK
         uses: actions/upload-artifact@v2
