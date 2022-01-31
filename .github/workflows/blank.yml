@@ -40,15 +40,20 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       
-      
-      - name: quality_assurance
-        run: ./gradlew lint
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Build SampleApplication
+        run: ./gradlew --no-daemon build
         
-      - name: Build Debug APK
-        run: ./gradlew build
+#       - name: quality_assurance
+#         run: ./gradlew lint
         
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug --stacktrace
+#       - name: Build Debug APK
+#         run: ./gradlew build
+        
+#       - name: Build Debug APK
+#         run: ./gradlew assembleDebug --stacktrace
          
         
       - name: Upload APK
