@@ -49,14 +49,15 @@ jobs:
 
 
       - name: Upload apk
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: debug apk
           path: app/src
-      - name: Upload To Telegram
-        uses: wei/curl@v1
-        with:
-            args: -F document=\"app/src/app-debug.apk\" -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendDocument\?chat_id\=${{secrets.CHAT_ID}}
+          
+#       - name: Upload To Telegram
+#         uses: wei/curl@v1
+#         with:
+#             args: -F document=\"app/src/app-debug.apk\" -X POST https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendDocument\?chat_id\=${{secrets.CHAT_ID}}
 
 
   test:
