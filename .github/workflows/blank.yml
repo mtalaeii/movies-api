@@ -56,7 +56,7 @@ jobs:
       - name: Upload To Telegram
         uses: wei/curl@v1
         with:
-            args: curl https://api.telegram.org/bot1503244543:AAH4UMkKQvxOylJN2Wy1yDCi1PwmA_1JSOo/sendMessage?chat_id=-1001188645918&text=test
+            args: curl https://api.telegram.org/bot${{secrets.BOT_TOKEN}}/sendMessage?chat_id=${{secrets.CHAT_ID}}&text=test
 
 
   test:
