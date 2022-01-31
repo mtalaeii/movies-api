@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v2.3.1
         with:
           name: debug apk
-          path: app/src
+          path: /path/to/app/src
           
 #       - name: Upload To Telegram
 #         uses: wei/curl@v1
