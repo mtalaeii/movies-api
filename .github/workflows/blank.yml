@@ -51,11 +51,11 @@ jobs:
         run: npm install
 
             # run the npm build script and sync it with the android project
-      - name: build ionic app
-        run: |
-            ionic build
-            ionic cap sync android
-      - name: Change wrapper permissions
+#      - name: build ionic app
+#        run: |
+#            ionic build
+#            ionic cap sync android
+#      - name: Change wrapper permissions
         run: chmod +x ./gradlew
 
       - name: Check and Report
