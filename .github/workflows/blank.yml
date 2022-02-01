@@ -55,7 +55,7 @@ jobs:
 #        run: |
 #            ionic build
 #            ionic cap sync android
-#      - name: Change wrapper permissions
+      - name: Change wrapper permissions
         run: chmod +x ./gradlew
 
       - name: Check and Report
