@@ -37,32 +37,51 @@ jobs:
         uses: actions/setup-java@v1
         with:
             java-version: 11
+      - name: set up nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+            # install ionic CLI
+      - name: install ionic-cli
+        run: npm install -g @ionic/cli
+
+            # install all npm dependencies of project
+      - name: install npm dependencies
+        run: npm install
+
+            # run the npm build script and sync it with the android project
+      - name: build ionic app
+        run: |
+            ionic build
+            ionic cap sync android
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
-      
+
+      - name: Check and Report
+        run: ./gradlew lint
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v2
+        with:
+            name: lint-results-debug
+            path: ${{ github.workspace }}/app/build/outputs/lint-results-debug.txt
+
+
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
-      - name: Build SampleApplication
-        run: ./gradlew --no-daemon build
-        
-#       - name: quality_assurance
-#         run: ./gradlew lint
-        
-#       - name: Build Debug APK
-#         run: ./gradlew build
-        
-#       - name: Build Debug APK
-#         run: ./gradlew assembleDebug --stacktrace
-         
-        
+      - name: Build Apk
+        run: ./gradlew assembleDebug
+
+
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with: 
-          name: App
+          name: app-debug
           path: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
 
-      - name: send custom message
+      - name: Upload to telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.CHAT_ID }}

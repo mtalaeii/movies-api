@@ -13,7 +13,7 @@ object BuildPlugin{
 object Versions{
     const val nav_version = "2.3.5"
     const val app_metrica_plugin_version = "0.2.4"
-    const val build_tools_version = "7.0.4"
+    const val build_tools_version = "7.1.0"
     const val app_metrica_version = "3.15.0"
     const val kotlin_gradle_plugin_version = "1.6.10"
     const val android_core_version = "1.7.0"
