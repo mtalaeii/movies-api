@@ -100,13 +100,14 @@ jobs:
         if: always()
   release:
       runs-on: ubuntu-latest
+      needs: test
       steps:
          - uses: r0adkll/sign-android-release@v1
            name: Sign app APK
     # ID used to access action output
            id: sign_app  
            with:
-              releaseDirectory: app/build/outputs/apk/release
+              releaseDirectory: app/build
               signingKeyBase64: ${{ secrets.SIGNING_KEY }}
               alias: ${{ secrets.ALIAS }}
               keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
