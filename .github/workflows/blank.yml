@@ -42,34 +42,15 @@ jobs:
       
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-
-      - name: Build SampleApplication
-        run: ./gradlew --no-daemon build
         
-#       - name: quality_assurance
-#         run: ./gradlew lint
+      - name: Lint check Reports
+        run: ./gradlew lint
         
-#       - name: Build Debug APK
-#         run: ./gradlew build
+      - name: Build App
+        run: ./gradlew build
         
-#       - name: Build Debug APK
-#         run: ./gradlew assembleDebug --stacktrace
-         
-        
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with: 
-          name: App
-          path: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
-
-      - name: send custom message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.CHAT_ID }}
-          token: ${{ secrets.BOT_TOKEN }}
-          message: Upload Apk to telegram not just aircraft
-          document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
-            
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
          
 
   test:
@@ -117,3 +98,34 @@ jobs:
           name: Test-Reports
           path: app/build/reports/report.txt
         if: always()
+  release:
+      runs-on: ubuntu-latest
+      steps:
+         - uses: r0adkll/sign-android-release@v1
+           name: Sign app APK
+    # ID used to access action output
+           id: sign_app  
+           with:
+              releaseDirectory: app/build/outputs/apk/release
+              signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+              alias: ${{ secrets.ALIAS }}
+              keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+              keyPassword: ${{ secrets.KEY_PASSWORD }}
+           env:
+      # override default build-tools version (29.0.3) -- optional
+            BUILD_TOOLS_VERSION: "31.0.0"
+
+  # Example use of `signedReleaseFile` output -- not needed
+         - uses: actions/upload-artifact@v2
+           with:
+             name: Signed app bundle
+             path: ${{steps.sign_app.outputs.signedReleaseFile}}
+         
+         - name: send custom message
+           uses: appleboy/telegram-action@master
+           with:
+             to: ${{ secrets.CHAT_ID }}
+             token: ${{ secrets.BOT_TOKEN }}
+             message: Upload Apk to telegram not just aircraft
+             document: ${{steps.sign_app.outputs.signedReleaseFile}}
+    
