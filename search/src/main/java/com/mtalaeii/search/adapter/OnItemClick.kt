@@ -1,6 +1,6 @@
 package com.mtalaeii.search.adapter
 
-import com.mtalaeii.core.model.search.Data
+import com.mtalaeii.search.model.Data
 
 interface OnItemClick {
     fun onClick(data: Data)

@@ -4,8 +4,8 @@ import androidx.lifecycle.viewModelScope
 import com.mtalaeii.core.BaseViewModel
 import com.mtalaeii.core.request.ErrorType
 import com.mtalaeii.core.request.RemoteErrorEmitter
-import com.mtalaeii.core.model.login.SignUpResponse
-import com.mtalaeii.core.request.Repository
+import com.mtalaeii.login.model.SignUpResponse
+import com.mtalaeii.login.request.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -24,7 +24,7 @@ class LoginViewModel @Inject constructor(var repo: Repository): BaseViewModel(),
     fun signIn(map:HashMap<String,String>){
         repo.signInUser(map).observeForever {
             if (it?.body() != null) {
-                repo.getInfo( "Bearer " + it.body()!!.accessToken.toString()).observeForever { it ->
+                repo.getInfo( "Bearer " + it.body()!!.accessToken.toString()).observeForever { it->
                     if (it?.body() != null) {
                         viewModelScope.launch {
                             data.send(it.body()!!)

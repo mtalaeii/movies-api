@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.mtalaeii.core.BaseFragment
 import com.mtalaeii.login.R
 import com.mtalaeii.login.databinding.SignUpFragmentBinding
-import com.mtalaeii.core.model.login.Auth
+import com.mtalaeii.login.model.Auth
 import com.mtalaeii.login.viewModel.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.async

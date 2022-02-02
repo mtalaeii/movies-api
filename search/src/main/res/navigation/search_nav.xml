@@ -21,6 +21,6 @@
         android:label="InfoFragment" >
         <argument
             android:name="data"
-            app:argType="com.mtalaeii.core.model.search.Data" />
+            app:argType="com.mtalaeii.search.model.Data" />
     </fragment>
 </navigation>

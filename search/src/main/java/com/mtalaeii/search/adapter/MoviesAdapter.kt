@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mtalaeii.core.model.search.Data
+import com.mtalaeii.search.model.Data
 import com.mtalaeii.search.databinding.SearchItemBinding
 import javax.inject.Inject
 

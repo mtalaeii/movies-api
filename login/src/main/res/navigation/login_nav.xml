@@ -36,7 +36,7 @@
         android:id="@+id/informationFragment"
         android:name="com.mtalaeii.login.view.InformationFragment"
         android:label="InformationFragment">
-        <argument android:name="data" app:argType="com.mtalaeii.core.model.login.SignUpResponse"/>
+        <argument android:name="data" app:argType="com.mtalaeii.login.model.SignUpResponse"/>
     </fragment>
 
 </navigation>

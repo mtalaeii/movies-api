@@ -4,9 +4,9 @@ import androidx.lifecycle.viewModelScope
 import com.mtalaeii.core.BaseViewModel
 import com.mtalaeii.core.request.ErrorType
 import com.mtalaeii.core.request.RemoteErrorEmitter
-import com.mtalaeii.core.model.login.Auth
-import com.mtalaeii.core.model.login.SignUpResponse
-import com.mtalaeii.core.request.Repository
+import com.mtalaeii.login.model.Auth
+import com.mtalaeii.login.model.SignUpResponse
+import com.mtalaeii.login.request.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
