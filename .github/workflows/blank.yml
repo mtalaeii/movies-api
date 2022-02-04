@@ -37,24 +37,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
             java-version: 11
-      - name: set up nodejs
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-
-            # install ionic CLI
-      - name: install ionic-cli
-        run: npm install -g @ionic/cli
-
-            # install all npm dependencies of project
-      - name: install npm dependencies
-        run: npm install
-
-            # run the npm build script and sync it with the android project
-#      - name: build ionic app
-#        run: |
-#            ionic build
-#            ionic cap sync android
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
 
@@ -65,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: lint-results-debug
-            path: ${{ github.workspace }}/app/build/outputs/lint-results-debug.txt
+            path: ${{ github.workspace }}/app/build/reports
 
 
       - name: Setup Android SDK
@@ -87,7 +69,7 @@ jobs:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
           message: Upload Apk to telegram not just aircraft
-          document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
+          document: ${{ github.workspace }}/app/build/outputs/apk/debug
             
          
 
@@ -190,4 +172,11 @@ jobs:
           with:
             name: Signed app bundle
             path: ${{steps.sign_app.outputs.signedReleaseFile}}
-      
+
+        - name: Upload to telegram
+          uses: appleboy/telegram-action@master
+          with:
+              to: ${{ secrets.CHAT_ID }}
+              token: ${{ secrets.BOT_TOKEN }}
+              message: Upload Apk to telegram not just aircraft
+              document: ${{steps.sign_app.outputs.signedReleaseFile}}
