@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashFragment : BaseFragment<FragmentSplashBinding>() {
+class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding::inflate) {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,9 +25,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMainPageNav())
         }
         return super.onCreateView(inflater, container, savedInstanceState)
-    }
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_splash
     }
 
 }
