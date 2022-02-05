@@ -10,12 +10,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class InformationFragment : BaseFragment<InformationFragmentBinding>() {
+class InformationFragment : BaseFragment<InformationFragmentBinding>(InformationFragmentBinding::inflate) {
     private val args by navArgs<InformationFragmentArgs>()
-
-    override fun getLayoutRes(): Int {
-        return R.layout.information_fragment
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mBinding.data = args.data

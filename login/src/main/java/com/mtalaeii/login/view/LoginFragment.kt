@@ -16,7 +16,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<LoginFragmentBinding>() {
+class LoginFragment : BaseFragment<LoginFragmentBinding>(LoginFragmentBinding::inflate) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val name:EditText = mBinding.nameEdt
         val password:EditText = mBinding.passwordEdt
@@ -56,9 +56,6 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>() {
 
 
         super.onViewCreated(view, savedInstanceState)
-    }
-    override fun getLayoutRes(): Int {
-        return R.layout.login_fragment
     }
 
 

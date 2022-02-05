@@ -6,8 +6,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mtalaeii.search.model.Data
 import com.mtalaeii.search.databinding.SearchItemBinding
+import com.mtalaeii.search.model.Data
 import javax.inject.Inject
 
 class MoviesAdapter @Inject constructor(): PagingDataAdapter<Data, MoviesAdapter.PassengersViewHolder>(PassengersComparator) {
@@ -50,6 +50,7 @@ class MoviesAdapter @Inject constructor(): PagingDataAdapter<Data, MoviesAdapter
             return oldItem == newItem
         }
     }
+
     fun setUpListener(onItemClick: OnItemClick){
         this.onItemClick = onItemClick
     }

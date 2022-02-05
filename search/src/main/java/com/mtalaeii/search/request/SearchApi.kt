@@ -11,11 +11,16 @@ interface SearchApi {
     suspend fun getByPage(
         @Query("page") page: Int
     ): Response<SearchResponse>
-    @GET("api/v1/movies/{movie_id}")
+    @GET("/api/v1/movies/{movie_id}")
     suspend fun getMovieInfo(@Path("movie_id") movie_id: Int): Response<InfoResponse>
     @Multipart
     @POST("/api/v1/movies/multi")
     suspend fun insertMovie(
         @PartMap map: HashMap<String, String>
     ): Response<InsertResponse>
+    @GET("/api/v1/movies")
+    suspend fun getByName(
+        @Query("page") page: Int=0,
+        @Query("q") name:String
+    ): Response<SearchResponse>
 }

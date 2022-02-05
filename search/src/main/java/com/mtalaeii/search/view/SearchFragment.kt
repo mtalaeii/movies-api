@@ -1,40 +1,38 @@
 package com.mtalaeii.search.view
 
+import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.View
+import android.view.*
+import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.get
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mtalaeii.core.BaseFragment
 import com.mtalaeii.search.R
-import com.mtalaeii.search.adapter.MoviesAdapter
 import com.mtalaeii.search.databinding.SearchFragmentBinding
 import com.mtalaeii.search.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.*
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.coroutines.async
-import kotlinx.coroutines.flow.collect
-import okhttp3.RequestBody
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class SearchFragment  : BaseFragment<SearchFragmentBinding>() {
+class SearchFragment  : BaseFragment<SearchFragmentBinding>(SearchFragmentBinding::inflate) {
     private val viewModel:SearchViewModel by viewModels()
-    override fun getLayoutRes(): Int {
-        (activity as AppCompatActivity).supportActionBar?.title = "Search"
-        return R.layout.search_fragment
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val layoutManager = LinearLayoutManager(context)
         var scrollDy = 0
+        setHasOptionsMenu(true)
         val bottomSheet = BottomSheetBehavior.from(mBinding.btmSh.root)
         viewModel.starter()
         mBinding.searchRcv.apply {
@@ -86,6 +84,8 @@ class SearchFragment  : BaseFragment<SearchFragmentBinding>() {
         lifecycleScope.launch {
             viewModel.movies.collectLatest { pagedData ->
                 viewModel.adapter.submitData(pagedData)
+//                mBinding.progress.visibility = View.GONE
+
             }
         }
         lifecycleScope.launchWhenStarted {
@@ -109,6 +109,30 @@ class SearchFragment  : BaseFragment<SearchFragmentBinding>() {
         }
         super.onViewCreated(view, savedInstanceState)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu)
+        val searchItem = menu.findItem(R.id.actionSearch)
+        val searchView = searchItem.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+//                mBinding.progress.visibility = View.VISIBLE
+                lifecycleScope.launch {
+                    viewModel.getByName(newText).collectLatest {
+                        viewModel.adapter.submitData(it)
+                        viewModel.adapter.notifyDataSetChanged()
+//                        mBinding.progress.visibility = View.GONE
+                    }
+                }
+                return false
+            }
+        })
+    }
+
 
 }
 

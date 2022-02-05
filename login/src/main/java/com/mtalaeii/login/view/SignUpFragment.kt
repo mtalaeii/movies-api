@@ -1,7 +1,9 @@
 package com.mtalaeii.login.view
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -16,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 @AndroidEntryPoint
-class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
+class SignUpFragment : BaseFragment<SignUpFragmentBinding>(SignUpFragmentBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val name: EditText = mBinding.nameEdt
@@ -54,9 +56,6 @@ class SignUpFragment : BaseFragment<SignUpFragmentBinding>() {
             findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToLoginFragment())
         }
         super.onViewCreated(view, savedInstanceState)
-    }
-    override fun getLayoutRes(): Int {
-        return R.layout.sign_up_fragment
     }
 
 }

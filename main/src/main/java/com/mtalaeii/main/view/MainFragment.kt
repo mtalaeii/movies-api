@@ -15,12 +15,8 @@ import com.mtalaeii.main.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : BaseFragment<MainFragmentBinding>() {
+class MainFragment : BaseFragment<MainFragmentBinding>(MainFragmentBinding::inflate) {
 
-
-    override fun getLayoutRes(): Int {
-       return R.layout.main_fragment
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mBinding.loginBtn.setOnClickListener {

@@ -17,13 +17,9 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class InfoFragment : BaseFragment<InfoFragmentBinding>() {
+class InfoFragment : BaseFragment<InfoFragmentBinding>(InfoFragmentBinding::inflate) {
     val viewModel:InfoViewModel by viewModels()
     val args by navArgs<InfoFragmentArgs>()
-    override fun getLayoutRes(): Int {
-        return R.layout.info_fragment
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.starter()
