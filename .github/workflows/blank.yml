@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: lint-results-debug
-            path: ${{ github.workspace }}/app/build/outputs/lint-results-debug.txt
+            path: ${{ github.workspace }}/app/build/outputs/reports
 
 
       - name: Setup Android SDK
@@ -79,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: app-debug
-          path: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ github.workspace }}/app/build/outputs/apk/debug
 
       - name: Upload to telegram
         uses: appleboy/telegram-action@master
@@ -87,7 +87,7 @@ jobs:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
           message: Upload Apk to telegram not just aircraft
-          document: ${{ github.workspace }}/app/build/outputs/apk/debug/app-debug.apk
+          document: ${{ github.workspace }}/app/build/outputs/apk/debug
             
          
 
@@ -134,7 +134,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Test-Reports
-          path: app/build/reports/report.txt
+          path: app/build/reports
         if: always()
   release:
       runs-on: macos-latest
@@ -190,4 +190,15 @@ jobs:
           with:
             name: Signed app bundle
             path: ${{steps.sign_app.outputs.signedReleaseFile}}
-      
+
+        - name: Upload to telegram
+          uses: appleboy/telegram-action@master
+          with:
+              to: ${{ secrets.CHAT_ID }}
+              token: ${{ secrets.BOT_TOKEN }}
+              document: ${{ github.workspace }}/app/release/app-release-signed.apk
+        - name: Releasing using Hub
+          uses: kyze8439690/action-release-releaseapk@master
+          env:
+              GITHUB_TOKEN: ${{ secrets.TOKEN }}
+              APP_FOLDER: app
