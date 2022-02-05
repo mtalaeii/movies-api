@@ -7,5 +7,5 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.mtalaeii.main.view.MainFragment"
-        android:label="MainFragment"/>
+        android:label="Movies App"/>
 </navigation>

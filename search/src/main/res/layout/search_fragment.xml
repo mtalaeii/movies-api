@@ -19,17 +19,6 @@
                 tools:layout_editor_absoluteX="124dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/add_fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
-                android:contentDescription="Add"
-                android:src="@drawable/ic_baseline_add_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/jump_upFab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,21 +29,8 @@
                 android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
                 android:foregroundGravity="center"
                 />
-
-<!--            <ProgressBar-->
-<!--                android:id="@+id/progress"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <include
-            android:id="@+id/btm_sh"
-            layout="@layout/bottom_sheet"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -31,9 +31,12 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/image"
                 app:layout_constraintStart_toEndOf="@+id/image"
+                tools:text="zz123456744489012844hghgghg490aaaaaaaa"
+                android:maxLines="2"
+                android:maxEms="16"
+                android:ellipsize="none"
                 app:layout_constraintTop_toTopOf="@+id/image"
-                app:layout_constraintVertical_bias="0.24000001"
-                tools:text="Title" />
+                app:layout_constraintVertical_bias="0.24000001" />
 
             <TextView
                 android:id="@+id/genre_txt"

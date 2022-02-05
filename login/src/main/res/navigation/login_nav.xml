@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.mtalaeii.login.view.LoginFragment"
-        android:label="LoginFragment">
+        android:label="Login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.mtalaeii.login.view.SignUpFragment"
-        android:label="SignUpFragment" >
+        android:label="SignUp" >
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/informationFragment"
         android:name="com.mtalaeii.login.view.InformationFragment"
-        android:label="InformationFragment">
+        android:label="User Information">
         <argument android:name="data" app:argType="com.mtalaeii.login.model.SignUpResponse"/>
     </fragment>
 

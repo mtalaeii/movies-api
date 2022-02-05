@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.mtalaeii.moviesapp.view.SplashFragment"
-        android:label="SplashFragment">
+        android:label="Movies App">
         <action
             android:id="@+id/action_splashFragment_to_main_page_nav"
             app:destination="@id/main_page_nav"

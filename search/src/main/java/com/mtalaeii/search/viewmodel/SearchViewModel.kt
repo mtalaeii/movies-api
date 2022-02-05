@@ -10,7 +10,6 @@ import com.mtalaeii.core.BaseViewModel
 import com.mtalaeii.search.model.Data
 import com.mtalaeii.core.request.ErrorType
 import com.mtalaeii.core.request.RemoteErrorEmitter
-import com.mtalaeii.search.model.InsertResponse
 import com.mtalaeii.search.adapter.MoviesAdapter
 import com.mtalaeii.search.adapter.OnItemClick
 import com.mtalaeii.search.request.MoviesDataSource
@@ -30,28 +29,12 @@ class SearchViewModel @Inject constructor(var repo: Repository, var adapter: Mov
     var errorMsg = Channel<String>()
     val errorTypeFlow = errorTypeCh.receiveAsFlow()
     var errorMsgFlow = errorMsg.receiveAsFlow()
-    private val insertResponse = Channel<InsertResponse>()
-    var insertResponseF = insertResponse.receiveAsFlow()
     private val info = Channel<Data>()
     var infoFlow = info.receiveAsFlow()
     val movies =
         Pager(config = PagingConfig(pageSize = 10, prefetchDistance = 2), pagingSourceFactory = {
             MoviesDataSource(repo)
         }).flow.cachedIn(viewModelScope)
-    fun insertMovie(map:HashMap<String,String>){
-        repo.insertMovie(map).observeForever {
-            if(it?.body()!= null){
-                viewModelScope.launch {
-                    insertResponse.send(it.body()!!)
-                }
-            }else{
-                viewModelScope.launch {
-                    Log.d("TAG", "insertMovie: $it")
-                    errorMsg.send("Error on insert!!")
-                }
-            }
-        }
-    }
     fun getByName(name:String): Flow<PagingData<Data>> {
         return Pager(config = PagingConfig(pageSize = 10, prefetchDistance = 2), pagingSourceFactory = {
             SearchDataSource(repo,name)
