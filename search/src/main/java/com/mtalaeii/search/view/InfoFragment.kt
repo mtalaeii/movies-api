@@ -5,11 +5,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.mtalaeii.core.BaseFragment
-import com.mtalaeii.search.R
+import com.mtalaeii.core.base.BaseFragment
 import com.mtalaeii.search.databinding.InfoFragmentBinding
 import com.mtalaeii.search.viewmodel.InfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +21,7 @@ class InfoFragment : BaseFragment<InfoFragmentBinding>(InfoFragmentBinding::infl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.starter()
-        viewModel.getMovieInfo(args.data.id)
+        viewModel.getMovieInfo(args.id)
         mBinding.viewModel = viewModel
         lifecycleScope.launchWhenStarted {
             val a = async { viewModel.errorMsgFlow.collect {

@@ -1,7 +1,7 @@
 package com.mtalaeii.login.viewModel
 
 import androidx.lifecycle.viewModelScope
-import com.mtalaeii.core.BaseViewModel
+import com.mtalaeii.core.base.BaseViewModel
 import com.mtalaeii.core.request.ErrorType
 import com.mtalaeii.core.request.RemoteErrorEmitter
 import com.mtalaeii.login.model.SignUpResponse
@@ -22,9 +22,9 @@ class LoginViewModel @Inject constructor(var repo: Repository): BaseViewModel(),
     val data = Channel<SignUpResponse>()
     var dataf = data.receiveAsFlow()
     fun signIn(map:HashMap<String,String>){
-        repo.signInUser(map).observeForever {
+        repo.signInUser(map).observeForever { it ->
             if (it?.body() != null) {
-                repo.getInfo( "Bearer " + it.body()!!.accessToken.toString()).observeForever { it->
+                repo.getInfo( "Bearer " + it.body()!!.accessToken.toString()).observeForever {
                     if (it?.body() != null) {
                         viewModelScope.launch {
                             data.send(it.body()!!)

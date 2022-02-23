@@ -20,7 +20,8 @@
         android:name="com.mtalaeii.search.view.InfoFragment"
         android:label="Info" >
         <argument
-            android:name="data"
-            app:argType="com.mtalaeii.search.model.Data" />
+            android:name="id"
+            app:argType="integer" />
+        <deepLink app:uri="to://info/{id}"/>
     </fragment>
 </navigation>

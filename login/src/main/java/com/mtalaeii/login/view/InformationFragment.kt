@@ -3,8 +3,7 @@ package com.mtalaeii.login.view
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
-import com.mtalaeii.core.BaseFragment
-import com.mtalaeii.login.R
+import com.mtalaeii.core.base.BaseFragment
 import com.mtalaeii.login.databinding.InformationFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 

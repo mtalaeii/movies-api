@@ -1,20 +1,15 @@
 package com.mtalaeii.search.view
 
-import android.content.res.Resources
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.get
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.mtalaeii.core.BaseFragment
+import com.mtalaeii.core.base.BaseFragment
 import com.mtalaeii.search.R
 import com.mtalaeii.search.adapter.MoviesLoadStateAdapter
 import com.mtalaeii.search.databinding.SearchFragmentBinding
@@ -24,7 +19,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.*
 
 
 @AndroidEntryPoint
@@ -33,14 +27,11 @@ class SearchFragment  : BaseFragment<SearchFragmentBinding>(SearchFragmentBindin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val layoutManager = LinearLayoutManager(context)
         var scrollDy = 0
+        mBinding.viewModel = viewModel
         setHasOptionsMenu(true)
         viewModel.starter()
         mBinding.searchRcv.apply {
             this.layoutManager = layoutManager
-            adapter = viewModel.adapter.withLoadStateFooter(MoviesLoadStateAdapter{
-                viewModel.adapter.retry()
-            })
-            setHasFixedSize(true)
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     scrollDy += dy
@@ -75,7 +66,7 @@ class SearchFragment  : BaseFragment<SearchFragmentBinding>(SearchFragmentBindin
                 Toast.makeText(requireContext(), "Type: $it", Toast.LENGTH_SHORT).show()
             }}
             val d = async { viewModel.infoFlow.collect {
-                findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToInfoFragment(it))
+                findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToInfoFragment(it.id))
             }}
             a.await()
             b.await()

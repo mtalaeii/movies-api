@@ -17,4 +17,5 @@
     <include app:graph="@navigation/login_nav" />
     <include app:graph="@navigation/main_page_nav" />
     <include app:graph="@navigation/search_nav" />
+    <include app:graph="@navigation/favorites_nav" />
 </navigation>

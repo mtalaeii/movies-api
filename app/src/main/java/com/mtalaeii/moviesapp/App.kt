@@ -9,7 +9,7 @@ import dagger.hilt.android.HiltAndroidApp
 class App:Application(){
     override fun onCreate() {
         super.onCreate()
-        val config = YandexMetricaConfig.newConfigBuilder("7d187f8d-63af-46ba-b7ce-4b8ae3e24c81")
+        val config = YandexMetricaConfig.newConfigBuilder(BuildConfig.APP_METRICA_API_KEY)
             .withNativeCrashReporting(false)
             .withLocationTracking(true)
             .withAppVersion("1.0")

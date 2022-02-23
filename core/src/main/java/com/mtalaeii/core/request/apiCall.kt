@@ -30,7 +30,6 @@ suspend fun <T> privateApiCall(emitter: RemoteErrorEmitter?, responseFunction: s
                     emitter?.onError("Error $body")
                 }
                 is TimeoutCancellationException -> {
-                    val body = e.message
                     emitter?.onError("Timeout! Please try again later")
                     emitter?.onError(ErrorType.TIMEOUT)
                 }

@@ -2,7 +2,11 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <data>
+        <variable
+            name="viewModel"
+            type="com.mtalaeii.search.viewmodel.SearchViewModel" />
+    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +20,8 @@
                 android:id="@+id/search_rcv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="124dp" />
+                tools:layout_editor_absoluteX="124dp"
+                app:setAdapter = "@{viewModel}"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/jump_upFab"
@@ -28,6 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
                 android:foregroundGravity="center"
+                android:visibility="gone"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

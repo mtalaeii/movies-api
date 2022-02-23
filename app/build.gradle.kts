@@ -17,7 +17,7 @@ android {
         targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
-
+        buildConfigField("String","APP_METRICA_API_KEY",properties["APP_METRICA_API_KEY"].toString())
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
     }
 
@@ -33,11 +33,9 @@ android {
     compileOptions {
         sourceCompatibility (JavaVersion.VERSION_11)
         targetCompatibility (JavaVersion.VERSION_11)
-//        sourceCompatibility (JavaVersion.VERSION_1_8)
-//        targetCompatibility (JavaVersion.VERSION_1_8)
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildFeatures{
         dataBinding = true
@@ -46,15 +44,37 @@ android {
         setPostApiKey( "223e4c53-169b-486d-b13a-3ff723e3dd41")
         setMappingBuildTypes(listOf())
     }
+    packagingOptions {
+        jniLibs.excludes.add("META-INF/*.kotlin_module")
+        jniLibs.excludes.add("win32-x86/attach_hotspot_windows.dll")
+        jniLibs.excludes.add("win32-x86-64/attach_hotspot_windows.dll")
+        jniLibs.excludes.add("META-INF/licenses/**")
+        jniLibs.excludes.add("META-INF/AL2.0")
+        jniLibs.excludes.add("META-INF/LGPL2.1")
+        jniLibs.excludes.add("META-INF/DEPENDENCIES")
+        jniLibs.excludes.add("META-INF/LICENSE")
+        jniLibs.excludes.add("META-INF/LICENSE.txt")
+        jniLibs.excludes.add("META-INF/license.txt")
+        jniLibs.excludes.add("META-INF/LICENSE.md")
+        jniLibs.excludes.add("META-INF/LICENSE-notice.md")
+    }
+    testOptions {
+        unitTests{
+            isReturnDefaultValues=true
+        }
+    }
 }
 
 dependencies {
     implementation(Dependencies.appLibraries)
-    testImplementation ("junit:junit:4.+")
+    testImplementation (Dependencies.testImplements)
     androidTestImplementation (Dependencies.androidTestImplements)
     kapt(Dependencies.kapt)
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
+    debugImplementation ("androidx.fragment:fragment-testing:1.5.0-alpha01")
     implementation(project(":login"))
     implementation(project(":core"))
     implementation(project(":search"))
     implementation(project(":main"))
+    implementation(project(":favorites"))
 }

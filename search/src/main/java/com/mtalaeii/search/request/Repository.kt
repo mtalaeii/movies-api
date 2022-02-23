@@ -12,6 +12,9 @@ class Repository @Inject constructor(var searchApi: SearchApi){
     fun getMovieInfo(movie_id:Int) = apiCall(emitter){
         searchApi.getMovieInfo(movie_id)
     }
+    fun getByName(name:String) = apiCall(emitter){
+        searchApi.getByName(name = name)
+    }
     fun addEmitter(emitter: RemoteErrorEmitter){
         this.emitter = emitter
     }

@@ -1,6 +1,6 @@
 package com.mtalaeii.search.viewmodel
 import androidx.lifecycle.viewModelScope
-import com.mtalaeii.core.BaseViewModel
+import com.mtalaeii.core.base.BaseViewModel
 import com.mtalaeii.search.model.InfoResponse
 import com.mtalaeii.core.request.ErrorType
 import com.mtalaeii.core.request.RemoteErrorEmitter

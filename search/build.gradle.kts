@@ -1,4 +1,3 @@
-
 plugins {
     id(BuildPlugin.android_library)
     id(BuildPlugin.android_)
@@ -16,7 +15,7 @@ android {
         targetSdk = AppConfig.targetSdk
 
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
-//        consumerProguardFiles "consumer-rules.pro"
+        consumerProguardFile("consumer-rules.pro")
     }
 
     buildTypes {
@@ -33,7 +32,7 @@ android {
         targetCompatibility (JavaVersion.VERSION_11)
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildFeatures{
         dataBinding = true
@@ -43,8 +42,10 @@ android {
 dependencies {
 
     implementation(Dependencies.appLibraries)
-    kapt(Dependencies.kapt)
-    testImplementation ("junit:junit:4.+")
+    testImplementation (Dependencies.testImplements)
     androidTestImplementation (Dependencies.androidTestImplements)
+    kapt(Dependencies.kapt)
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
+    debugImplementation ("androidx.fragment:fragment-testing:1.5.0-alpha01")
     implementation(project(":core"))
 }

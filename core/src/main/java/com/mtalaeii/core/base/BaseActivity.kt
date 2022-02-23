@@ -1,4 +1,4 @@
-package com.mtalaeii.core
+package com.mtalaeii.core.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.findNavController
 
 abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
-    lateinit var binding: ViewDataBinding
+    lateinit var binding: DB
     @LayoutRes
     abstract fun getLayoutRes(): Int
     override fun onCreate(savedInstanceState: Bundle?) {

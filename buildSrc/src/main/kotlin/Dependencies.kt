@@ -13,7 +13,7 @@ object BuildPlugin{
 object Versions{
     const val nav_version = "2.3.5"
     const val app_metrica_plugin_version = "0.2.4"
-    const val build_tools_version = "7.1.0"
+    const val build_tools_version = "7.1.1"
     const val app_metrica_version = "3.15.0"
     const val kotlin_gradle_plugin_version = "1.6.10"
     const val android_core_version = "1.7.0"
@@ -34,6 +34,21 @@ object Versions{
     const val lifecycle_version = "2.4.0"
     const val test_ext_version = "1.1.3"
     const val test_espresso_version = "3.4.0"
+    const val test_core_version = "1.4.0"
+    const val junit_version = "4.13.2"
+    const val hamcrest_version = "1.3"
+    const val core_testing_version = "2.1.0"
+    const val robolectric_version = "4.3.1"
+    const val kotlinx_coroutines_test_version = "1.5.2"
+    const val truth_version = "1.0.1"
+    const val mockito_version = "4.2.0"
+    const val dexmaker_mockito_version = "2.12.1"
+    const val hilt_android_testing_version = "2.38.1"
+    const val espresso_contrib_version = "3.4.0"
+    const val mockito_inline_version = "4.2.0"
+    const val turbine_version = "0.7.0"
+    const val room_version = "2.4.1"
+
 
 }
 object Dependencies{
@@ -41,6 +56,11 @@ object Dependencies{
     private const val support = "androidx.legacy:legacy-support-v4:${Versions.support_version}"
     private const val lifecycle_liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
     private const val lifecycle_viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+    //impl for test
+    private const val test_core =  "androidx.test:core:${Versions.test_core_version}"
+    private const val mockito_inline ="org.mockito:mockito-inline:${Versions.mockito_inline_version}"
+
+
 
     private const val  navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_version}"
     private const val  navigation_ui = "androidx.navigation:navigation-ui-ktx:${Versions.nav_version}"
@@ -63,10 +83,31 @@ object Dependencies{
     private const val paging =  "androidx.paging:paging-runtime:${Versions.paging_version}"
     //Glide
     private const val glide =  "com.github.bumptech.glide:glide:${Versions.glide_version}"
+    //Room
+    private const val room =  "androidx.room:room-runtime:${Versions.room_version}"
+    private const val room_compiler =  "androidx.room:room-compiler:${Versions.room_version}"
+    private const val room_ktx =  "androidx.room:room-ktx:${Versions.room_version}"
+//    private const val room_paging =  "androidx.room:room-paging:${Versions.room_version}"
 
     //androidTestLibraries
     private const val test_ext = "androidx.test.ext:junit:${Versions.test_ext_version}"
     private const val test_espresso = "androidx.test.espresso:espresso-core:${Versions.test_espresso_version}"
+    private const val dexmaker_mockito = "com.linkedin.dexmaker:dexmaker-mockito:${Versions.dexmaker_mockito_version}"
+    private const val hilt_android_testing = "com.google.dagger:hilt-android-testing:${Versions.hilt_android_testing_version}"
+    private const val espresso_contrib = "androidx.test.espresso:espresso-contrib:${Versions.espresso_contrib_version}"
+
+
+    //testImplementation
+    private const val junit =  "junit:junit:${Versions.junit_version}"
+    private const val hamcrest =  "org.hamcrest:hamcrest-all:${Versions.hamcrest_version}"
+    private const val core_testing = "androidx.arch.core:core-testing:${Versions.core_testing_version}"
+    private const val robolectric = "org.robolectric:robolectric:${Versions.robolectric_version}"
+    private const val kotlinx_coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinx_coroutines_test_version}"
+    private const val truth = "com.google.truth:truth:${Versions.truth_version}"
+    private const val mockito ="org.mockito:mockito-core:${Versions.mockito_version}"
+    private const val turbine ="app.cash.turbine:turbine:${Versions.turbine_version}"
+    private const val room_testing =  "androidx.room:room-testing:${Versions.room_version}"
+
 
     val appLibraries = arrayListOf<String>().apply {
         add(navigation_ui)
@@ -87,17 +128,43 @@ object Dependencies{
         add(support)
         add(lifecycle_viewModel)
         add(lifecycle_liveData)
+        add(test_core)
+        add(mockito_inline)
+        add(room)
+        add(room_ktx)
+//        add(room_paging)
     }
 
 
     val kapt = arrayListOf<String>().apply {
         add(hilt_compiler)
         add(hilt_compiler_androidx)
+        add(dexmaker_mockito)
+        add(room_compiler)
     }
 
     val androidTestImplements = arrayListOf<String>().apply {
         add(test_ext)
+        add(junit)
         add(test_espresso)
+        add(core_testing)
+        add(kotlinx_coroutines_test)
+        add(truth)
+        add(dexmaker_mockito)
+        add(hilt_android_testing)
+        add(espresso_contrib)
+    }
+
+    val testImplements = arrayListOf<String>().apply {
+        add(junit)
+        add(hamcrest)
+        add(core_testing)
+        add(robolectric)
+        add(kotlinx_coroutines_test)
+        add(truth)
+        add(mockito)
+        add(turbine)
+        add(room_testing)
     }
 
 }

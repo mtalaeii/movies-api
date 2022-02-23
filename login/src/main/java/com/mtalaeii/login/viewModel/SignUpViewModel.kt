@@ -1,7 +1,7 @@
 package com.mtalaeii.login.viewModel
 
 import androidx.lifecycle.viewModelScope
-import com.mtalaeii.core.BaseViewModel
+import com.mtalaeii.core.base.BaseViewModel
 import com.mtalaeii.core.request.ErrorType
 import com.mtalaeii.core.request.RemoteErrorEmitter
 import com.mtalaeii.login.model.Auth
@@ -23,12 +23,10 @@ class SignUpViewModel @Inject constructor(private var repo: Repository) : BaseVi
     var dataf = data.receiveAsFlow()
     fun signUp(field: Auth){
         repo.signUpNewUser(field).observeForever{
-            if (it?.body() != null) {
-                viewModelScope.launch {
+            viewModelScope.launch {
+                if (it?.body() != null) {
                     data.send(it.body()!!)
-                }
-            }else{
-                viewModelScope.launch {
+                }else{
                     errorMsg.send("Error on signUp check email!")
                 }
             }
