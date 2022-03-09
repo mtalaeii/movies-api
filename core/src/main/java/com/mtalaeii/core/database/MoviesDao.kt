@@ -13,5 +13,5 @@ interface MoviesDao {
     @Query("SELECT * FROM `movies_items`")
     fun observeAllMoviesItems():LiveData<List<Data>>
     @Query("SELECT * FROM `movies_items` WHERE `id` = :id LIMIT 1")
-    fun getItemById(id:Int):LiveData<Data>
+    fun getItemById(id:Int): LiveData<Data>
 }

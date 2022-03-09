@@ -34,16 +34,16 @@ class FavoriteFragment : BaseFragment<FavoriteFragmentBinding>(FavoriteFragmentB
                 ItemTouchHelper(viewModel.itemTouchCallBack).attachToRecyclerView(this)
             }
         }
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             viewModel.itemId.receiveAsFlow().collect {
                 findNavController().navigate(Uri.parse("to://info/$it"))
             }
         }
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             viewModel.onDeleteItem.receiveAsFlow().collect { data->
                 Snackbar.make(requireView(),"Successfully delete item", Snackbar.LENGTH_LONG).apply {
                     setAction("Undo"){
-                        lifecycleScope.launch {
+                        lifecycleScope.launchWhenStarted {
                             viewModel.movieRepo.insertMovieItem(data)
                         }
                     }

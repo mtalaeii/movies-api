@@ -48,6 +48,7 @@ object Versions{
     const val mockito_inline_version = "4.2.0"
     const val turbine_version = "0.7.0"
     const val room_version = "2.4.1"
+    const val arch_lifecycle_version = "2.4.1"
 
 
 }
@@ -56,6 +57,8 @@ object Dependencies{
     private const val support = "androidx.legacy:legacy-support-v4:${Versions.support_version}"
     private const val lifecycle_liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
     private const val lifecycle_viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}"
+
+//    private const val arch_lifecycle = "android.arch.lifecycle:extensions:${Versions.arch_lifecycle_version}"
     //impl for test
     private const val test_core =  "androidx.test:core:${Versions.test_core_version}"
     private const val mockito_inline ="org.mockito:mockito-inline:${Versions.mockito_inline_version}"
@@ -132,6 +135,7 @@ object Dependencies{
         add(mockito_inline)
         add(room)
         add(room_ktx)
+//        add(arch_lifecycle)
 //        add(room_paging)
     }
 

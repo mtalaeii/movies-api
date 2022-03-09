@@ -75,6 +75,5 @@ dependencies {
     implementation(project(":login"))
     implementation(project(":core"))
     implementation(project(":search"))
-    implementation(project(":main"))
     implementation(project(":favorites"))
 }

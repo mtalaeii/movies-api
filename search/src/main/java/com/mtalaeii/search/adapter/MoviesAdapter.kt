@@ -12,6 +12,9 @@ import com.mtalaeii.search.R
 import com.mtalaeii.search.databinding.SearchItemBinding
 import com.mtalaeii.search.model.Data
 import com.mtalaeii.search.viewmodel.SearchViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 class MoviesAdapter @Inject constructor(
@@ -24,7 +27,7 @@ class MoviesAdapter @Inject constructor(
             Glide.with(binding.root).load(item.poster).into(binding.image)
             titleTxt.text = item.title
             genreTxt.text = "Genre :"+item.genres[0]
-            repo.getItemById(item.id).observeForever{
+            repo.getItemById(item.id).observeForever {
                 if(it != null){
                     iconFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
                 }else{

@@ -1,6 +1,7 @@
 package com.mtalaeii.moviesapp.view
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +24,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
 
         lifecycleScope.launchWhenCreated {
             delay(3000)
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMainPageNav())
+            findNavController().navigate(Uri.parse("to://search"))
         }
         return super.onCreateView(inflater, container, savedInstanceState)
     }

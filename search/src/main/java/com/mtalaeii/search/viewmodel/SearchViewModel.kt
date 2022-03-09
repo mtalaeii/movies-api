@@ -3,6 +3,8 @@ import android.util.Log
 import com.mtalaeii.search.BR
 import androidx.databinding.Bindable
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -11,6 +13,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.recyclerview.widget.RecyclerView
 import com.mtalaeii.core.base.BaseViewModel
+import com.mtalaeii.core.base.Event
 import com.mtalaeii.core.database.MoviesDao
 import com.mtalaeii.core.repositories.DefaultMovieRepository
 import com.mtalaeii.search.model.Data
@@ -86,25 +89,16 @@ class SearchViewModel @Inject constructor(var repo: Repository, var adapter: Mov
     }
 
     override fun onFavoriteIconCLick(data: Data) {
-        movieRepo.getItemById(data.id).observeForever{
-            viewModelScope.launch {
-//                if (it != null) {
-//                    Log.d("TAG", "onFavoriteIconCLick: ${it.toString()}", )
-//                    movieRepo.deleteMovieItem(
-//                        com.mtalaeii.core.model.Data(
-//                            id=it.id, title =it.title, poster = it.poster, imdb_rating = it.imdb_rating, itemId = data.id
-//                        )
-//                    )
-//                }
-//                else
-//                {
-                    movieRepo.insertMovieItem(
-                        com.mtalaeii.core.model.Data(
-                            id=data.id, title =data.title, poster = data.poster, imdb_rating = data.imdb_rating, itemId = data.id
-                        )
-                    )
-//                }
-            }
+        viewModelScope.launch {
+            movieRepo.insertMovieItem(
+                com.mtalaeii.core.model.Data(
+                    itemId = data.id,
+                    id = data.id,
+                    title = data.title,
+                    poster = data.poster,
+                    imdb_rating = data.imdb_rating
+                )
+            )
         }
     }
 
