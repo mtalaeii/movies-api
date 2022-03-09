@@ -95,7 +95,7 @@ object Dependencies{
     //androidTestLibraries
     private const val test_ext = "androidx.test.ext:junit:${Versions.test_ext_version}"
     private const val test_espresso = "androidx.test.espresso:espresso-core:${Versions.test_espresso_version}"
-    private const val dexmaker_mockito = "com.linkedin.dexmaker:dexmaker-mockito:${Versions.dexmaker_mockito_version}"
+//    private const val dexmaker_mockito = "com.linkedin.dexmaker:dexmaker-mockito:${Versions.dexmaker_mockito_version}"
     private const val hilt_android_testing = "com.google.dagger:hilt-android-testing:${Versions.hilt_android_testing_version}"
     private const val espresso_contrib = "androidx.test.espresso:espresso-contrib:${Versions.espresso_contrib_version}"
 
@@ -143,7 +143,7 @@ object Dependencies{
     val kapt = arrayListOf<String>().apply {
         add(hilt_compiler)
         add(hilt_compiler_androidx)
-        add(dexmaker_mockito)
+//        add(dexmaker_mockito)
         add(room_compiler)
     }
 
@@ -154,7 +154,7 @@ object Dependencies{
         add(core_testing)
         add(kotlinx_coroutines_test)
         add(truth)
-        add(dexmaker_mockito)
+//        add(dexmaker_mockito)
         add(hilt_android_testing)
         add(espresso_contrib)
     }
